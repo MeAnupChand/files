@@ -1,0 +1,15 @@
+---
+ - name : List all compute instances in Ansible compartment
+   become: false
+   connection: local
+   hosts: localhost
+   tasks:
+     - name: List instances
+       oracle.oci.oci_compute_instance_facts:
+       #required
+         compartment_id: "ocid1.compartment.oc1..aaaaaaaazbnamkz6skmwc4cbmezlphu42wid6zf2lev3k2woigpe7pdqoxnq"
+               register: currinstances
+               #  - debug: msg="{{currinstances | json_query('instances[*].display_name')}}"
+                - debug: msg="{{currinstances}}"
+    #                 #with_items: currinstances.instances
+    #                 # ansible-galaxy install oracle.oci_ansible_modules

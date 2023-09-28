@@ -1,0 +1,6 @@
+plugin: oracle.oci.oci
+
+regions:
+- us-ashburn-1
+
+enable-parallel-processing: yes

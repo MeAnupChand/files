@@ -1,0 +1,19 @@
+- hosts: all
+  become: true
+  tasks:
+  - name: Install httpd Package
+    yum: name=httpd state=latest
+  - name: Copy html page
+    copy: src=/root/labs/index.html dest=/var/www/html
+  - name: Copy conf file
+    copy: src=/root/labs/httpd.conf dest=/etc/httpd/conf 
+remote_src=yes
+    notify:
+    - restart apache
+  - name: Start and Enable httpd service
+    service: name=httpd state=restarted enabled=yes
+ handlers:
+ - name: restart apache
+   service: 
+     name:httpd 
+    state:restarted

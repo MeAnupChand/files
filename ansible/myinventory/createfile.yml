@@ -1,0 +1,9 @@
+---
+ - hosts: all
+   become: yes
+   tasks:
+   - name: creation of a file using ansible
+     file: 
+      src: test.txt
+      path: /home/opc 
+      state: touch
